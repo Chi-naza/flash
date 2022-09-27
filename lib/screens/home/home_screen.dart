@@ -1,11 +1,17 @@
+import 'package:flash/utilities/data.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width.round();
+    var h = MediaQuery.of(context).size.height.round();
+    print("OUR SCREEN: ($w , $h)");
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -26,105 +32,38 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 30,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(3, (index) {
-                return  Container(
-                  alignment: Alignment.center,
-                  height: 200,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/CAMILLUS.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Text(
-                    'Sports',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: MyAppColors.appWhite,
-                    ),
-                  ),
-                );
-              }),
-            ),
-            SizedBox(height: 5,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(3, (index) {
-                return  Container(
-                  alignment: Alignment.center,
-                  height: 200,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/CAMILLUS.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Text(
-                    'Arts',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: MyAppColors.appWhite,
-                    ),
-                  ),
-                );
-              }),
-            ),
-            SizedBox(height: 5,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(3, (index) {
-                return  Container(
-                  alignment: Alignment.center,
-                  height: 200,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/CAMILLUS.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Text(
-                    'Music',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: MyAppColors.appWhite,
-                    ),
-                  ),
-                );
-              }),
-            ),
-            // GRID
-            // GridView.count(
-            //   shrinkWrap: true,
-            //   crossAxisCount: 3,
-            //   crossAxisSpacing: 5,
-            //   mainAxisSpacing: 5,
-            //   childAspectRatio: 1,
-            //   children: List.generate(10, (index) {
-            //     return ColoredBox(
-            //       child: Text('A'),
-            //       color: MyAppColors.mainColorLight,
-            //     );
-            //   }),
-            // ),
-            SizedBox(height: 30,),
-          ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: h*0.01, vertical: h*0.06),
+        child: GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 3,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 5,
+          childAspectRatio: h/h*0.6,
+          children: List.generate(homeData.length, (index) {
+            return  Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: AssetImage(homeData[index]['photo']),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Text(
+                homeData[index]['title'],
+                style: TextStyle(
+                  fontSize: h*0.035,
+                  fontWeight: FontWeight.bold,
+                  color: MyAppColors.appWhite,
+                ),
+              ),
+            );
+          }),
         ),
-      )
+      ),
     );
   }
 }
+
+
