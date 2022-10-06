@@ -13,11 +13,13 @@ class HomeScreen extends StatelessWidget {
     print("OUR SCREEN: ($w , $h)");
 
     return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         title: const Text(
           "News Category",
           style: TextStyle(
             color: MyAppColors.mainColor,
+            fontWeight: FontWeight.w600,
           ),
         ),
         backgroundColor: Colors.white,
@@ -32,34 +34,37 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: h*0.01, vertical: h*0.06),
-        child: GridView.count(
-          shrinkWrap: true,
-          crossAxisCount: 3,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 5,
-          childAspectRatio: h/h*0.6,
-          children: List.generate(homeData.length, (index) {
-            return  Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                  image: AssetImage(homeData[index]['photo']),
-                  fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: h*0.008, vertical: h*0.08),
+          child: GridView.count(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            crossAxisCount: 3,
+            crossAxisSpacing: h*0.006,
+            mainAxisSpacing: h*0.0075,
+            childAspectRatio: h/h*0.6,
+            children: List.generate(homeData.length, (index) {
+              return  Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(homeData[index]['photo']),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: Text(
-                homeData[index]['title'],
-                style: TextStyle(
-                  fontSize: h*0.035,
-                  fontWeight: FontWeight.bold,
-                  color: MyAppColors.appWhite,
+                child: Text(
+                  homeData[index]['title'],
+                  style: TextStyle(
+                    fontSize: h*0.035,
+                    fontWeight: FontWeight.bold,
+                    color: MyAppColors.appWhite,
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+          ),
         ),
       ),
     );

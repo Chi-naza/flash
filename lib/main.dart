@@ -1,4 +1,6 @@
 
+import 'package:flash/screens/auth/signin_screen.dart';
+import 'package:flash/screens/auth/signup_screen.dart';
 import 'package:flash/screens/home/home_screen.dart';
 import 'package:flash/test_home.dart';
 import 'package:flash/shoe_screen.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       title: 'flash',
-      home: const HomeScreen(),
+      home: const SignUpScreen(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
