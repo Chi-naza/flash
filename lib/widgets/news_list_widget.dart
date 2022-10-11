@@ -1,5 +1,56 @@
+import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
 
+class NewsListWidget extends StatelessWidget {
+  final String titleText;
+  final String headerImage;
+  final SliverChildDelegate sliverDelegate;
+
+
+
+  const NewsListWidget({Key? key, required this.titleText, required this.headerImage, required this.sliverDelegate}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width.round();
+    var h = MediaQuery.of(context).size.height.round();
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          // floating: true,
+          pinned: true,
+          // snap: true,
+          expandedHeight: h*0.35,
+          backgroundColor: MyAppColors.appWhite,
+          centerTitle: true,
+          title: Text(
+            titleText,
+            style: TextStyle(
+              color: MyAppColors.mainColor,
+              fontSize: h*0.03,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          flexibleSpace: FlexibleSpaceBar(
+            background: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    headerImage,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: sliverDelegate,
+        ),
+      ],
+    );
+  }
+}
 
 
 

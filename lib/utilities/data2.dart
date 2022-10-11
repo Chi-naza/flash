@@ -13,7 +13,7 @@ List<Map> screenData = [
   },
   {
     'image': 'assets/images/music.jpg',
-    'text': 'When even a rich city like Mumbai is starved',
+    'text': 'When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved',
     'text2': 'of funds-Economic Times',
     'text3': ''
   },
@@ -36,3 +36,4 @@ List<Map> screenData = [
     'text3': ''
   },
 ];
+
