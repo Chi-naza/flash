@@ -14,7 +14,8 @@ class GeneralNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: NewsListWidget(
-        titleText: 'General News',
+        appBarTitleText: 'General News',
+        titleText: "The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
         headerImage: 'assets/images/economy.jpg',
         sliverDelegate: SliverChildBuilderDelegate(
           ((context, index) {
@@ -43,7 +44,8 @@ class GeneralNewsListScreen extends StatelessWidget {
                           // Second Item in our Row. Beside the Image
                           Container(
                             margin: EdgeInsets.only(left: h * 0.01),                                                  
-                            width: w - h*0.15,
+                            width: w*0.7,
+                            // color: Colors.amber,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,9 +54,6 @@ class GeneralNewsListScreen extends StatelessWidget {
                                   screenData[index]['text'] + screenData[index]['text2'] + screenData[index]['text3'],
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    // color: Colors.bl,
-                                  ),
                                 ),                             
                                 SizedBox(height: h * 0.01),
                                 Container(
