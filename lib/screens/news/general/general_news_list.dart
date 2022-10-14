@@ -27,7 +27,7 @@ class GeneralNewsListScreen extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: h*0.01),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        // crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           // Image: first item in the outer Row
                           Container(
@@ -47,7 +47,7 @@ class GeneralNewsListScreen extends StatelessWidget {
                             width: w*0.7,
                             // color: Colors.amber,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(                                    
@@ -63,7 +63,7 @@ class GeneralNewsListScreen extends StatelessWidget {
                                       OurButton(
                                         text: 'GENERAL', 
                                         height: h*0.047, 
-                                        width: w-280, 
+                                        width: w*0.3, 
                                         radius: h*0.009, 
                                         fontSize: h*0.016,
                                       ),
