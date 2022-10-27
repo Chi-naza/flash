@@ -1,10 +1,17 @@
+import 'package:flash/screens/auth/signup_screen.dart';
+import 'package:flash/screens/home/home_screen.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flash/widgets/our_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+  SignInScreen({Key? key}) : super(key: key);
+
+  static String routeName = '/sign-in';
+
+  var _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,56 +51,59 @@ class SignInScreen extends StatelessWidget {
             // Input Fields
             Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: h*0.03),
-                  child: Column(
-                    children: [
-                      // Email
-                      Material(
-                        elevation: 3,
-                        borderRadius: BorderRadius.circular(h*0.05),
-                        child: TextField(
-                          // controller: pass in your controller,
-                          autocorrect: true,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(h*0.023),
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: MyAppColors.mainColor,
-                            ),
-                            hintText: 'Email',
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: h*0.03),
-                      // Password
-                      Material(
-                        elevation: 3,
-                        borderRadius: BorderRadius.circular(h*0.05),
-                        child: Container(
-                          // height: 60,
-                          child: TextField(
+                Form(
+                  key: _formKey, 
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: h*0.03),
+                    child: Column(
+                      children: [
+                        // Email
+                        Material(
+                          elevation: 3,
+                          borderRadius: BorderRadius.circular(h*0.05),
+                          child: TextFormField(
                             // controller: pass in your controller,
                             autocorrect: true,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(h*0.023),
                               prefixIcon: Icon(
-                                Icons.lock,
+                                Icons.email,
                                 color: MyAppColors.mainColor,
                               ),
-                              hintText: 'Password',
+                              hintText: 'Email',
                               border: InputBorder.none,
-                              // contentPadding: EdgeInsets.all( 59),
-                              // constraints: BoxConstraints(
-                              //   maxWidth: 300,
-                              //   minHeight: 100,
-                              // ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: h*0.03),
+                        // Password
+                        Material(
+                          elevation: 3,
+                          borderRadius: BorderRadius.circular(h*0.05),
+                          child: Container(
+                            // height: 60,
+                            child: TextFormField(
+                              // controller: pass in your controller,
+                              autocorrect: true,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(h*0.023),
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: MyAppColors.mainColor,
+                                ),
+                                hintText: 'Password',
+                                border: InputBorder.none,
+                                // contentPadding: EdgeInsets.all( 59),
+                                // constraints: BoxConstraints(
+                                //   maxWidth: 300,
+                                //   minHeight: 100,
+                                // ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: h*0.01),
@@ -135,7 +145,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: (){},
+                      onPressed: () => Get.toNamed(SignUpScreen.routeName),
                       child: Text(
                         'Register',
                         style: TextStyle(

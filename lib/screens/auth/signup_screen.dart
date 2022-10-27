@@ -1,9 +1,13 @@
+import 'package:flash/screens/auth/signin_screen.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flash/widgets/our_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
+
+  static String routeName = '/sign-up';
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +172,7 @@ class SignUpScreen extends StatelessWidget {
                         style: TextStyle(fontSize: h*0.02),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.toNamed(SignInScreen.routeName),
                         child: Text(
                           'Login',
                           style: TextStyle(

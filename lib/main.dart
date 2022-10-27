@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flash/app_bindings.dart';
 import 'package:flash/firebase_options.dart';
 import 'package:flash/screens/auth/profile_screen.dart';
+import 'package:flash/screens/auth/signin_screen.dart';
 import 'package:flash/screens/intro/onboarding_screens.dart';
+import 'package:flash/utilities/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,10 +24,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       // debugShowCheckedModeBanner: false,
       title: 'flash',
-      home: const ProfileScreen(),
+      home: SignInScreen(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
+      getPages: Routes.flashRoutes, 
     );
   }
 }
