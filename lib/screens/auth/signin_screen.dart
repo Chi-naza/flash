@@ -1,3 +1,4 @@
+import 'package:flash/controllers/auth_controller.dart';
 import 'package:flash/screens/auth/signup_screen.dart';
 import 'package:flash/screens/home/home_screen.dart';
 import 'package:flash/utilities/my_app_colors.dart';
@@ -11,7 +12,11 @@ class SignInScreen extends StatelessWidget {
 
   static String routeName = '/sign-in';
 
-  var _formKey = GlobalKey<FormState>();
+  Authcontroller authController = Get.find<Authcontroller>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +57,6 @@ class SignInScreen extends StatelessWidget {
             Column(
               children: [
                 Form(
-                  key: _formKey, 
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: h*0.03),
                     child: Column(
@@ -62,7 +66,7 @@ class SignInScreen extends StatelessWidget {
                           elevation: 3,
                           borderRadius: BorderRadius.circular(h*0.05),
                           child: TextFormField(
-                            // controller: pass in your controller,
+                            controller: emailController,
                             autocorrect: true,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(h*0.023),
@@ -83,7 +87,8 @@ class SignInScreen extends StatelessWidget {
                           child: Container(
                             // height: 60,
                             child: TextFormField(
-                              // controller: pass in your controller,
+                              controller: passwordController,
+                              obscureText: true,
                               autocorrect: true,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(h*0.023),
@@ -93,11 +98,6 @@ class SignInScreen extends StatelessWidget {
                                 ),
                                 hintText: 'Password',
                                 border: InputBorder.none,
-                                // contentPadding: EdgeInsets.all( 59),
-                                // constraints: BoxConstraints(
-                                //   maxWidth: 300,
-                                //   minHeight: 100,
-                                // ),
                               ),
                             ),
                           ),
@@ -126,12 +126,21 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: h*0.01),
                 //Login Button
-                OurButton(
-                  text: 'LOGIN', 
-                  height: h * 0.08, 
-                  width: w - 100, 
-                  radius: h*0.05, 
-                  fontSize: h*0.03,
+                GestureDetector(
+                  onTap: () {
+                    var email = emailController.text.trim();
+                    var pswd = passwordController.text.trim();
+                    print("User email = ${email}");
+                    print("User password = ${pswd}");
+                    authController.validateSignIn(email, pswd);
+                  },
+                  child: OurButton(
+                    text: 'LOGIN', 
+                    height: h * 0.08, 
+                    width: w - 100, 
+                    radius: h*0.05, 
+                    fontSize: h*0.03,
+                  ),
                 ),
                 // CTA texts: signup, don't have account?
                 SizedBox(height: h*0.01),

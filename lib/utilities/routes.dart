@@ -22,7 +22,7 @@ class Routes {
     // SignUp screen
     GetPage(
       name: SignUpScreen.routeName, 
-      page: () => const SignUpScreen(),
+      page: () => SignUpScreen(),
     ),
 
   ];

@@ -1,3 +1,4 @@
+import 'package:flash/controllers/auth_controller.dart';
 import 'package:flash/screens/auth/signin_screen.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flash/widgets/our_button.dart';
@@ -5,9 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+
+  SignUpScreen({Key? key}) : super(key: key);
 
   static String routeName = '/sign-up';
+
+  Authcontroller authController = Get.find<Authcontroller>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +75,7 @@ class SignUpScreen extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: emailController,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h*0.023),
                           prefixIcon: Icon(
@@ -89,6 +99,7 @@ class SignUpScreen extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: usernameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h*0.023),
@@ -113,6 +124,8 @@ class SignUpScreen extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: passwordController,
+                        obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h*0.023),
@@ -137,6 +150,8 @@ class SignUpScreen extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: confirmPasswordController,
+                        obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h*0.023),
@@ -154,12 +169,24 @@ class SignUpScreen extends StatelessWidget {
                     height: h * 0.06,
                   ),
                   //Sign Up Button
-                OurButton(
-                  text: 'SignUp', 
-                  height: h * 0.08, 
-                  width: w - 100, 
-                  radius: h*0.05, 
-                  fontSize: h*0.03,
+                GestureDetector(
+                  onTap: (){
+                    var email = emailController.text.trim();
+                    var pswd = passwordController.text.trim();
+                    var pswd2 = confirmPasswordController.text.trim();
+                    var username = usernameController.text.trim();
+
+                    print("User email = ${email}");
+                    print("User password = ${pswd}");
+                    authController.validateSignUp(email, pswd, pswd2, username);
+                  },
+                  child: OurButton(
+                    text: 'SignUp', 
+                    height: h * 0.08, 
+                    width: w - 100, 
+                    radius: h*0.05, 
+                    fontSize: h*0.03,
+                  ),
                 ),
                   SizedBox(
                     height: h * 0.02,
