@@ -2,6 +2,7 @@ import 'package:flash/controllers/auth_controller.dart';
 import 'package:flash/screens/auth/signup_screen.dart';
 import 'package:flash/screens/home/home_screen.dart';
 import 'package:flash/utilities/my_app_colors.dart';
+import 'package:flash/widgets/feedback.dart';
 import 'package:flash/widgets/our_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -128,11 +129,15 @@ class SignInScreen extends StatelessWidget {
                 //Login Button
                 GestureDetector(
                   onTap: () {
-                    var email = emailController.text.trim();
-                    var pswd = passwordController.text.trim();
+                    String email = emailController.text.trim();
+                    String pswd = passwordController.text.trim();
                     print("User email = ${email}");
                     print("User password = ${pswd}");
-                    authController.validateSignIn(email, pswd);
+                    
+                    if(authController.validateSignIn(email, pswd)){
+                      UserFeedBack.showSuccessSnackBar('Success!');
+                    }
+
                   },
                   child: OurButton(
                     text: 'LOGIN', 

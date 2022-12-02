@@ -29,6 +29,7 @@ class Authcontroller extends GetxController{
 
   }
 
+
   bool validateSignIn(String email, String pswd){
     if(email.isEmpty){
       UserFeedBack.showErrorSnackBar('Email is empty');
@@ -48,6 +49,7 @@ class Authcontroller extends GetxController{
     }
 
   }
+
 
 
   bool validateSignUp(String email, String pswd, String pswd2, String username) {
@@ -75,6 +77,20 @@ class Authcontroller extends GetxController{
     }else{
       print("Returned True");
       return true;
+    }
+
+  }
+
+
+  Future<void> registerUser(String suppliedEmail, String suppliedPassword) async {
+
+    try{
+      await auth.createUserWithEmailAndPassword(email: suppliedEmail, password: suppliedPassword);
+      // if successful
+      UserFeedBack.showSuccessSnackBar('Dear $suppliedEmail, you have been registered successfully');
+      
+    } on FirebaseAuthException catch(e){
+      UserFeedBack.showErrorSnackBar(e.message!);
     }
 
   }

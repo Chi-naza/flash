@@ -176,9 +176,9 @@ class SignUpScreen extends StatelessWidget {
                     var pswd2 = confirmPasswordController.text.trim();
                     var username = usernameController.text.trim();
 
-                    print("User email = ${email}");
-                    print("User password = ${pswd}");
-                    authController.validateSignUp(email, pswd, pswd2, username);
+                    if(authController.validateSignUp(email, pswd, pswd2, username)){
+                      authController.registerUser(email, pswd);
+                    }
                   },
                   child: OurButton(
                     text: 'SignUp', 
