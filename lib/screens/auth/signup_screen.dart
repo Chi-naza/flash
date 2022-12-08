@@ -18,6 +18,7 @@ class SignUpScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width.round();
@@ -174,10 +175,10 @@ class SignUpScreen extends StatelessWidget {
                     var email = emailController.text.trim();
                     var pswd = passwordController.text.trim();
                     var pswd2 = confirmPasswordController.text.trim();
-                    var username = usernameController.text.trim();
+                    var username = usernameController.text.trim();                 
 
                     if(authController.validateSignUp(email, pswd, pswd2, username)){
-                      authController.registerUser(email, pswd);
+                      authController.registerUser(email, pswd, username);
                     }
                   },
                   child: OurButton(

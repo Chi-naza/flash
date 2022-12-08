@@ -82,12 +82,12 @@ class Authcontroller extends GetxController{
   }
 
 
-  Future<void> registerUser(String suppliedEmail, String suppliedPassword) async {
+  Future<void> registerUser(String suppliedEmail, String suppliedPassword, String  uName) async {
 
     try{
       await auth.createUserWithEmailAndPassword(email: suppliedEmail, password: suppliedPassword);
       // if successful
-      UserFeedBack.showSuccessSnackBar('Dear $suppliedEmail, you have been registered successfully');
+      UserFeedBack.showSuccessSnackBar('Dear ${uName.toUpperCase()}, you have been registered successfully');
       
     } on FirebaseAuthException catch(e){
       UserFeedBack.showErrorSnackBar(e.message!);
