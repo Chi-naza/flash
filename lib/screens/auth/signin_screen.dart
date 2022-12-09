@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 
 class SignInScreen extends StatelessWidget {
+
   SignInScreen({Key? key}) : super(key: key);
 
   static String routeName = '/sign-in';
@@ -130,12 +131,10 @@ class SignInScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     String email = emailController.text.trim();
-                    String pswd = passwordController.text.trim();
-                    print("User email = ${email}");
-                    print("User password = ${pswd}");
+                    String pswd = passwordController.text.trim();                 
                     
                     if(authController.validateSignIn(email, pswd)){
-                      UserFeedBack.showSuccessSnackBar('Success!');
+                      authController.loginUser(email, pswd);
                     }
 
                   },

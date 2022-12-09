@@ -1,6 +1,8 @@
+import 'package:flash/screens/auth/profile_screen.dart';
 import 'package:flash/utilities/data.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,7 +30,9 @@ class HomeScreen extends StatelessWidget {
         elevation: 1.0,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              Get.to(ProfileScreen());
+            }, 
             icon: Icon(
               Icons.search,
               color: MyAppColors.mainGreyColor,
