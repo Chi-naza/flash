@@ -3,7 +3,9 @@ import 'package:flash/app_bindings.dart';
 import 'package:flash/firebase_options.dart';
 import 'package:flash/screens/auth/signin_screen.dart';
 import 'package:flash/screens/auth/signup_screen.dart';
+import 'package:flash/screens/home/home_screen.dart';
 import 'package:flash/screens/intro/onboarding_screens.dart';
+import 'package:flash/screens/news/general/general_news_list.dart';
 import 'package:flash/utilities/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,11 +26,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       // debugShowCheckedModeBanner: false,
       title: 'flash',
-      home: SignUpScreen(),
+      home: HomeScreen(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      getPages: Routes.flashRoutes, 
+      // getPages: Routes.flashRoutes, 
     );
   }
 }

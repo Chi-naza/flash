@@ -1,14 +1,15 @@
 class NewsModel {
-  String status;
-  int totalResults;
-  List<Articles> articles;
+  String? status;
+  int? totalResults;
+  List<Articles>? articles;
 
-  NewsModel({ required this.status, required this.totalResults, required this.articles});
+  NewsModel({ this.status, this.totalResults, this.articles});
 
-  NewsModel.fromJson(Map<String, dynamic> json) :
-    status = json['status'],
-    totalResults = json['totalResults'],
+  NewsModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    totalResults = json['totalResults'];
     articles = (json['articles'] as List).map((e) => Articles.fromJson(e)).toList();
+  }
     // if (json['articles'] != null) {
     //   articles = new List<Articles>();
     //   json['articles'].forEach((v) {
@@ -22,7 +23,7 @@ class NewsModel {
     data['status'] = this.status;
     data['totalResults'] = this.totalResults;
     if (this.articles != null) {
-      data['articles'] = this.articles.map((v) => v.toJson()).toList();
+      data['articles'] = this.articles!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -33,36 +34,36 @@ class NewsModel {
 
 class Articles {
   Source? source;
-  String author;
-  String title;
-  String description;
-  String url;
-  String urlToImage;
-  String publishedAt;
-  String content;
+  String? author;
+  String? title;
+  String? description;
+  String? url;
+  String? urlToImage;
+  String? publishedAt;
+  String? content;
   
 
   Articles({
     this.source,
-    required  this.author,
-    required  this.title,
-    required  this.description,
-    required  this.url,
-    required  this.urlToImage,
-    required  this.publishedAt,
-    required this.content
+    this.author,
+    this.title,
+    this.description,
+    this.url,
+    this.urlToImage,
+    this.publishedAt,
+    this.content
   });
 
 
   Articles.fromJson(Map<String, dynamic> json) :
     source = json['source'] != null ? Source.fromJson(json['source']) : null,
-    author = json['author'],
-    title = json['title'],
-    description = json['description'],
-    url = json['url'],
-    urlToImage = json['urlToImage'],
-    publishedAt = json['publishedAt'],
-    content = json['content'];
+    author = json['author'] == null ? "" : json['author'],
+    title = json['title'] == null ? "" : json['title'],
+    description = json['description'] == null ? "" : json['description'],
+    url = json['url'] == null ? "" : json['url'],
+    urlToImage = json['urlToImage'] == null ? "" : json['urlToImage'],
+    publishedAt = json['publishedAt'] == null ? "" : json['publishedAt'],
+    content = json['content'] == null ? "" : json['content'];
 
 
 
@@ -91,8 +92,8 @@ class Source {
   Source({required this.id, required this.name});
 
   Source.fromJson(Map<String, dynamic> json):
-    id = json['id'],
-    name = json['name'];
+    id = json['id'] == null ? "" : json['id'],
+    name = json['name'] == null ? "" : json['name'];
   
 
   Map<String, dynamic> toJson() {

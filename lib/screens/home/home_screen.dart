@@ -1,4 +1,5 @@
 import 'package:flash/screens/auth/profile_screen.dart';
+import 'package:flash/screens/news/general/general_news_list.dart';
 import 'package:flash/utilities/data.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
@@ -51,25 +52,48 @@ class HomeScreen extends StatelessWidget {
             mainAxisSpacing: h*0.0075,
             childAspectRatio: h/h*0.6,
             children: List.generate(homeData.length, (index) {
-              return  Container(
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.35),
-                      BlendMode.darken
+              return  InkWell(
+                onTap: () {
+                  if(index == 0){
+                    // add screen
+                  }else if(index == 1){
+                    // add screen
+                  }else if(index == 2){
+                    //add screen
+                  }else if(index == 3){
+                    //add screen
+                  }else if(index == 4){
+                    //add screen
+                  }else if(index == 5){
+                    //add screen
+                  }else if(index == 6){
+                    Get.to(GeneralNewsListScreen());
+                  }else if(index == 7){
+                    //add screen
+                  }else if(index == 8){
+                    //add screen
+                  }
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withOpacity(0.35),
+                        BlendMode.darken
+                      ),
+                      image: AssetImage(homeData[index]['photo']),
+                      fit: BoxFit.cover,
                     ),
-                    image: AssetImage(homeData[index]['photo']),
-                    fit: BoxFit.cover,
                   ),
-                ),
-                child: Text(
-                  homeData[index]['title'],
-                  style: TextStyle(
-                    fontSize: h*0.035,
-                    fontWeight: FontWeight.bold,
-                    color: MyAppColors.appWhite,
+                  child: Text(
+                    homeData[index]['title'],
+                    style: TextStyle(
+                      fontSize: h*0.035,
+                      fontWeight: FontWeight.bold,
+                      color: MyAppColors.appWhite,
+                    ),
                   ),
                 ),
               );

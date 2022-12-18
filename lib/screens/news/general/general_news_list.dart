@@ -1,10 +1,15 @@
+import 'package:flash/controllers/news_controller.dart';
+import 'package:flash/screens/news/general/general_news_detail.dart';
 import 'package:flash/widgets/news_list_widget.dart';
 import 'package:flash/widgets/our_button.dart';
 import 'package:flutter/material.dart';
-import '../../../utilities/data2.dart';
+import 'package:get/get.dart';
 
 class GeneralNewsListScreen extends StatelessWidget {
-  const GeneralNewsListScreen({Key? key}) : super(key: key);
+
+  GeneralNewsListScreen({Key? key}) : super(key: key);
+
+  NewsController newsController = Get.find<NewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -13,85 +18,96 @@ class GeneralNewsListScreen extends StatelessWidget {
     
     return Scaffold(
       backgroundColor: Colors.white,
-      body: NewsListWidget(
-        appBarTitleText: 'General News',
-        titleText: "The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-        headerImage: 'assets/images/economy.jpg',
-        sliverDelegate: SliverChildBuilderDelegate(
-          ((context, index) {
-            return Column(
-              children: [
-                Material(
-                  elevation: 4,
-                  child: Container(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: h*0.01),
-                      child: Row(
-                        // crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          // Image: first item in the outer Row
-                          Container(
-                            margin: EdgeInsets.only(left: h * 0.01),
-                            height: h * 0.14,
-                            width: h * 0.12,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(screenData[index]['image']),
-                                ),
-                                borderRadius: BorderRadius.circular(h * 0.02)),
-                          ),
-                          // Second Item in our Row. Beside the Image
-                          Container(
-                            margin: EdgeInsets.only(left: h * 0.01),                                                  
-                            width: w*0.7,
-                            // color: Colors.amber,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Obx(() {
+          return newsController.stillFetching.value? const Center(child: CircularProgressIndicator()) : NewsListWidget(
+            appBarTitleText: 'General News',
+            titleText: newsController.generalNewsList[0].title!,//"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
+            headerImage: newsController.generalNewsList[0].urlToImage!,//'assets/images/economy.jpg',
+            sliverDelegate: SliverChildBuilderDelegate(
+              ((context, index) {
+
+                var generalNews = newsController.generalNewsList[index];
+
+                return Column(
+                  children: [
+                    Material(
+                      elevation: 4,
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: h*0.01),
+                          child: InkWell(
+                            onTap: () {
+                              Get.to(GeneralNewsDetailScreen(newsArticle: generalNews));
+                            },
+                            child: Row(
+                              // crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Text(                                    
-                                  screenData[index]['text'] + screenData[index]['text2'] + screenData[index]['text3'],
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),                             
-                                SizedBox(height: h * 0.01),
+                                // Image: first item in the outer Row
+                                generalNews.urlToImage! == null? CircularProgressIndicator() : Container(
+                                  margin: EdgeInsets.only(left: h * 0.01),
+                                  height: h * 0.14,
+                                  width: h * 0.12,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(generalNews.urlToImage!),//AssetImage(screenData[index]['image']),
+                                      ),
+                                      borderRadius: BorderRadius.circular(h * 0.02)),
+                                ),
+                                // Second Item in our Row. Beside the Image
                                 Container(
-                                  margin: EdgeInsets.only(left: h * 0.001),
-                                  child: Row(
+                                  margin: EdgeInsets.only(left: h * 0.01),                                                  
+                                  width: w*0.7,
+                                  // color: Colors.amber,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      OurButton(
-                                        text: 'GENERAL', 
-                                        height: h*0.047, 
-                                        width: w*0.3, 
-                                        radius: h*0.009, 
-                                        fontSize: h*0.016,
+                                      Text(                                    
+                                        generalNews.description!,
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),                             
+                                      SizedBox(height: h * 0.01),
+                                      Container(
+                                        margin: EdgeInsets.only(left: h * 0.001),
+                                        child: Row(
+                                          children: [
+                                            OurButton(
+                                              text: 'GENERAL', 
+                                              height: h*0.047, 
+                                              width: w*0.3, 
+                                              radius: h*0.009, 
+                                              fontSize: h*0.016,
+                                            ),
+                                            SizedBox(
+                                              width: h * 0.006,
+                                            ),
+                                            Text(
+                                              generalNews.publishedAt!,//'08 February',
+                                              style: TextStyle(color: Colors.grey),
+                                            )
+                                          ],
+                                        ),
                                       ),
-                                      SizedBox(
-                                        width: h * 0.006,
-                                      ),
-                                      Text(
-                                        '08 February',
-                                        style: TextStyle(color: Colors.grey),
-                                      )
                                     ],
                                   ),
-                                ),
+                                )
                               ],
                             ),
-                          )
-                        ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                // Giving space between the list items
-                SizedBox(height: h*0.02),
-              ],
-            );
-          }),
-          childCount: 5,
-        ),
+                    // Giving space between the list items
+                    SizedBox(height: h*0.02),
+                  ],
+                );
+              }),
+              childCount: newsController.generalNewsList.length,
+            ),
+          );
+        }
       ),
     );
   }

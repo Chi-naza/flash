@@ -23,7 +23,7 @@ class NewsDetailWidget extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(imageUrl),
+                  image: NetworkImage(imageUrl),//AssetImage(imageUrl),
               ),
             ),
           ),
