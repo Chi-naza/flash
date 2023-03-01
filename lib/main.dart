@@ -24,13 +24,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: 'flash',
-      home: HomeScreen(),
+      // home: OnboardingScreens(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      // getPages: Routes.flashRoutes, 
+      getPages: Routes.flashRoutes, 
     );
   }
 }

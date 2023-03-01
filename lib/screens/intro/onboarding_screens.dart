@@ -1,4 +1,6 @@
+import 'package:flash/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -10,12 +12,15 @@ class OnboardingScreens extends StatefulWidget {
 
 class _OnboardingScreensState extends State<OnboardingScreens> {
 
+  // instance of auth controller
+  Authcontroller authcontroller = Get.find<Authcontroller>();
+
   // A function which arranges and returns our Onboarding Screen Images
   Widget onboardingImage(String imageUrl) {
-  return Align(
-    child: Image.asset('$imageUrl', width: 350.0),
-    alignment: Alignment.bottomCenter,
-  );
+    return Align(
+      child: Image.asset('$imageUrl', width: 220.0),
+      alignment: Alignment.bottomCenter,
+    );
   }
 
   @override
@@ -53,32 +58,46 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
       //main background of screen
       pages: [ //set your page view here
         PageViewModel(
-          title: "Fractional shares",
-          body: "Instead of having to buy an entire share, invest any amount you want.",
-          image: onboardingImage('assets/images/art.jpg'),
+          title: "The Home of News",
+          body: "Instead of moving from one place to another, we bring the news to where you are.",
+          image: onboardingImage('assets/images/logo.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Fractional shares",
-          body: "Instead of having to buy an entire share, invest any amount you want.",
-          image: onboardingImage('assets/images/art.jpg'),
+          title: "The Voices of People",
+          body: "A privilege to get firsthand information from the world over. Listen to the heartbeat of people. Hear the voices of people",
+          image: onboardingImage('assets/images/mic.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Fractional shares",
-          body: "Instead of having to buy an entire share, invest any amount you want.",
-          image: onboardingImage('assets/images/art.jpg'),
+          title: "No need to hold the papers",
+          body: "Get all the news you need. You don't have to continue buying the papers, get it all those news here",
+          image: onboardingImage('assets/images/newspaper.png'),
           decoration: pageDecoration,
         ),
         //add more screen here
       ],
-      onDone: () {}, //go to home page on done
-      onSkip: () {},  // You can override on skip 
+      //go to home page if logged in
+      onDone: () {
+        if(authcontroller.isUserLoggedIn()){
+          authcontroller.goToHomeScreen();
+        }else{
+          authcontroller.goToLoginScreen();
+        }
+      }, 
+      //go to home page if logged in
+      onSkip: () {
+        if(authcontroller.isUserLoggedIn()){
+          authcontroller.goToHomeScreen();
+        }else{
+          authcontroller.goToLoginScreen();
+        }
+      },  // You can override on skip 
       showSkipButton: true,
       // skipFlex: 0,
       nextFlex: 0,
-      skip: Text('Skip', style: TextStyle(color: Colors.white),),
-      next: Icon(Icons.arrow_forward, color: Colors.white,),
+      skip: const Text('Skip', style: TextStyle(color: Colors.white),),
+      next: const Icon(Icons.arrow_forward, color: Colors.white,),
       done: const Text(
         'Getting Stated', 
         style: TextStyle(
@@ -89,7 +108,7 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
         size: Size(10.0, 10.0), //size of dots
         color: Colors.white, //color of dots
         activeSize: Size(22.0, 10.0),
-        //activeColor: Colors.white, //color of active dot
+        // activeColor: Colors.white, //color of active dot
         activeShape: RoundedRectangleBorder( //shave of active dot
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),

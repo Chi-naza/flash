@@ -73,19 +73,23 @@ class GeneralNewsListScreen extends StatelessWidget {
                                         margin: EdgeInsets.only(left: h * 0.001),
                                         child: Row(
                                           children: [
-                                            OurButton(
-                                              text: 'GENERAL', 
-                                              height: h*0.047, 
-                                              width: w*0.3, 
-                                              radius: h*0.009, 
-                                              fontSize: h*0.016,
+                                            Expanded(
+                                              child: OurButton(
+                                                text: 'GENERAL', 
+                                                height: h*0.047, 
+                                                width: w*0.3, 
+                                                radius: h*0.009, 
+                                                fontSize: h*0.016,
+                                              ),
                                             ),
                                             SizedBox(
                                               width: h * 0.006,
                                             ),
-                                            Text(
-                                              generalNews.publishedAt!,//'08 February',
-                                              style: TextStyle(color: Colors.grey),
+                                            Expanded(
+                                              child: Text(
+                                                generalNews.publishedAt!,//'08 February',
+                                                style: TextStyle(color: Colors.grey),
+                                              ),
                                             )
                                           ],
                                         ),

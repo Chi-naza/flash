@@ -1,20 +1,29 @@
+import 'package:flash/controllers/auth_controller.dart';
 import 'package:flash/screens/auth/profile_screen.dart';
+import 'package:flash/screens/news/art/art_news_list.dart';
+import 'package:flash/screens/news/economy/economy_news_list.dart';
+import 'package:flash/screens/news/fun/fun_news_list.dart';
 import 'package:flash/screens/news/general/general_news_list.dart';
+import 'package:flash/screens/news/health/health_news_list.dart';
 import 'package:flash/utilities/data.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+
+  HomeScreen({Key? key}) : super(key: key);
 
   static String routeName = '/home';
+
+  Authcontroller authcontroller = Get.find<Authcontroller>();
 
 
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width.round();
     var h = MediaQuery.of(context).size.height.round();
+
     print("OUR SCREEN: ($w , $h)");
 
     return Scaffold(
@@ -34,8 +43,17 @@ class HomeScreen extends StatelessWidget {
             onPressed: (){
               Get.to(ProfileScreen());
             }, 
-            icon: Icon(
-              Icons.search,
+            icon: const Icon(
+              Icons.person,
+              color: MyAppColors.mainGreyColor,
+            ),
+          ),
+          IconButton(
+            onPressed: (){
+              authcontroller.logoutUser();
+            }, 
+            icon: const Icon(
+              Icons.logout,
               color: MyAppColors.mainGreyColor,
             ),
           ),
@@ -57,13 +75,16 @@ class HomeScreen extends StatelessWidget {
                   if(index == 0){
                     // add screen
                   }else if(index == 1){
-                    // add screen
+                    // economy
+                    Get.to(EconomyNewsListScreen());
                   }else if(index == 2){
                     //add screen
                   }else if(index == 3){
-                    //add screen
+                    //health
+                    Get.to(HealthNewsListScreen());
                   }else if(index == 4){
-                    //add screen
+                    //fun
+                    Get.to(FunNewsListScreen());
                   }else if(index == 5){
                     //add screen
                   }else if(index == 6){
@@ -71,7 +92,8 @@ class HomeScreen extends StatelessWidget {
                   }else if(index == 7){
                     //add screen
                   }else if(index == 8){
-                    //add screen
+                    //art
+                    Get.to(ArtNewsListScreen());
                   }
                 },
                 child: Container(
