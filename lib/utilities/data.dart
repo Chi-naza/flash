@@ -1,7 +1,3 @@
-
-import 'package:flash/screens/news/general/general_news_list.dart';
-import 'package:get/get.dart';
-
 List<Map> homeData = [
   {
     'title': 'Tech',
@@ -40,7 +36,3 @@ List<Map> homeData = [
     'photo': 'assets/images/art.jpg',
   }
 ];
-
-
-
-

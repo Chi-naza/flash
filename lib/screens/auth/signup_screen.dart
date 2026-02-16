@@ -6,18 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
-
-  SignUpScreen({Key? key}) : super(key: key);
-
   static String routeName = '/sign-up';
 
-  Authcontroller authController = Get.find<Authcontroller>();
+  final Authcontroller authController = Get.find<Authcontroller>();
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +77,7 @@ class SignUpScreen extends StatelessWidget {
                         autocorrect: true,
                         controller: emailController,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(h*0.023),
+                          contentPadding: EdgeInsets.all(h * 0.023),
                           prefixIcon: Icon(
                             Icons.email,
                             color: MyAppColors.mainColor,
@@ -103,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                         controller: usernameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(h*0.023),
+                          contentPadding: EdgeInsets.all(h * 0.023),
                           prefixIcon: Icon(
                             Icons.person,
                             color: MyAppColors.mainColor,
@@ -129,7 +128,7 @@ class SignUpScreen extends StatelessWidget {
                         obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(h*0.023),
+                          contentPadding: EdgeInsets.all(h * 0.023),
                           prefixIcon: Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
@@ -155,7 +154,7 @@ class SignUpScreen extends StatelessWidget {
                         obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(h*0.023),
+                          contentPadding: EdgeInsets.all(h * 0.023),
                           prefixIcon: Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
@@ -170,25 +169,26 @@ class SignUpScreen extends StatelessWidget {
                     height: h * 0.06,
                   ),
                   //Sign Up Button
-                GestureDetector(
-                  onTap: (){
-                    var email = emailController.text.trim();
-                    var pswd = passwordController.text.trim();
-                    var pswd2 = confirmPasswordController.text.trim();
-                    var username = usernameController.text.trim();                 
+                  GestureDetector(
+                    onTap: () {
+                      var email = emailController.text.trim();
+                      var pswd = passwordController.text.trim();
+                      var pswd2 = confirmPasswordController.text.trim();
+                      var username = usernameController.text.trim();
 
-                    if(authController.validateSignUp(email, pswd, pswd2, username)){
-                      authController.registerUser(email, pswd, username);
-                    }
-                  },
-                  child: OurButton(
-                    text: 'SignUp', 
-                    height: h * 0.08, 
-                    width: w - 100, 
-                    radius: h*0.05, 
-                    fontSize: h*0.03,
+                      if (authController.validateSignUp(
+                          email, pswd, pswd2, username)) {
+                        authController.registerUser(email, pswd, username);
+                      }
+                    },
+                    child: OurButton(
+                      text: 'SignUp',
+                      height: h * 0.08,
+                      width: w - 100,
+                      radius: h * 0.05,
+                      fontSize: h * 0.03,
+                    ),
                   ),
-                ),
                   SizedBox(
                     height: h * 0.02,
                   ),
@@ -197,7 +197,7 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Already have an Account?",
-                        style: TextStyle(fontSize: h*0.02),
+                        style: TextStyle(fontSize: h * 0.02),
                       ),
                       TextButton(
                         onPressed: () => Get.toNamed(SignInScreen.routeName),
@@ -206,13 +206,13 @@ class SignUpScreen extends StatelessWidget {
                           style: TextStyle(
                               color: MyAppColors.mainColor,
                               fontWeight: FontWeight.bold,
-                              fontSize: h*0.02),
+                              fontSize: h * 0.02),
                         ),
                       )
                     ],
                   ),
-                  SizedBox(height: h*0.03),
-                ],                
+                  SizedBox(height: h * 0.03),
+                ],
               ),
             ),
           ],

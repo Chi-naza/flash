@@ -7,13 +7,17 @@ class NewsListWidget extends StatelessWidget {
   final String headerImage;
   final SliverChildDelegate sliverDelegate;
 
-
-
-  const NewsListWidget({Key? key, required this.titleText, required this.headerImage, required this.sliverDelegate, required this.appBarTitleText}) : super(key: key);
+  const NewsListWidget(
+      {Key? key,
+      required this.titleText,
+      required this.headerImage,
+      required this.sliverDelegate,
+      required this.appBarTitleText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.width.round();
+    // var w = MediaQuery.of(context).size.width.round();
     var h = MediaQuery.of(context).size.height.round();
     return CustomScrollView(
       slivers: [
@@ -21,16 +25,15 @@ class NewsListWidget extends StatelessWidget {
           // floating: true,
           pinned: true,
           // snap: true,
-          expandedHeight: h*0.35,
+          expandedHeight: h * 0.35,
           backgroundColor: MyAppColors.appWhite,
           centerTitle: true,
           title: Text(
             appBarTitleText,
             style: TextStyle(
-              color: MyAppColors.mainColor,
-              fontSize: h*0.03,
-              fontWeight: FontWeight.bold
-            ),
+                color: MyAppColors.mainColor,
+                fontSize: h * 0.03,
+                fontWeight: FontWeight.bold),
           ),
           flexibleSpace: FlexibleSpaceBar(
             background: Container(
@@ -46,12 +49,13 @@ class NewsListWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: h*0.01, vertical: h*0.01),
-                    color: Colors.black.withOpacity(0.3),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: h * 0.01, vertical: h * 0.01),
+                    color: Colors.black.withValues(alpha: 0.3),
                     child: Text(
                       titleText,
                       style: TextStyle(
-                        fontSize: h*0.025, 
+                        fontSize: h * 0.025,
                         fontWeight: FontWeight.w700,
                         color: MyAppColors.appWhite,
                       ),

@@ -10,14 +10,13 @@ import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
-
-  HomeScreen({Key? key}) : super(key: key);
-
   static String routeName = '/home';
 
   Authcontroller authcontroller = Get.find<Authcontroller>();
 
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +39,18 @@ class HomeScreen extends StatelessWidget {
         elevation: 1.0,
         actions: [
           IconButton(
-            onPressed: (){
+            onPressed: () {
               Get.to(ProfileScreen());
-            }, 
+            },
             icon: const Icon(
               Icons.person,
               color: MyAppColors.mainGreyColor,
             ),
           ),
           IconButton(
-            onPressed: (){
+            onPressed: () {
               authcontroller.logoutUser();
-            }, 
+            },
             icon: const Icon(
               Icons.logout,
               color: MyAppColors.mainGreyColor,
@@ -61,37 +60,38 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: h*0.008, vertical: h*0.08),
+          margin:
+              EdgeInsets.symmetric(horizontal: h * 0.008, vertical: h * 0.08),
           child: GridView.count(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 3,
-            crossAxisSpacing: h*0.006,
-            mainAxisSpacing: h*0.0075,
-            childAspectRatio: h/h*0.6,
+            crossAxisSpacing: h * 0.006,
+            mainAxisSpacing: h * 0.0075,
+            childAspectRatio: h / h * 0.6,
             children: List.generate(homeData.length, (index) {
-              return  InkWell(
+              return InkWell(
                 onTap: () {
-                  if(index == 0){
+                  if (index == 0) {
                     // add screen
-                  }else if(index == 1){
+                  } else if (index == 1) {
                     // economy
                     Get.to(EconomyNewsListScreen());
-                  }else if(index == 2){
+                  } else if (index == 2) {
                     //add screen
-                  }else if(index == 3){
+                  } else if (index == 3) {
                     //health
                     Get.to(HealthNewsListScreen());
-                  }else if(index == 4){
+                  } else if (index == 4) {
                     //fun
                     Get.to(FunNewsListScreen());
-                  }else if(index == 5){
+                  } else if (index == 5) {
                     //add screen
-                  }else if(index == 6){
+                  } else if (index == 6) {
                     Get.to(GeneralNewsListScreen());
-                  }else if(index == 7){
+                  } else if (index == 7) {
                     //add screen
-                  }else if(index == 8){
+                  } else if (index == 8) {
                     //art
                     Get.to(ArtNewsListScreen());
                   }
@@ -102,9 +102,7 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                       colorFilter: ColorFilter.mode(
-                        Colors.black.withOpacity(0.35),
-                        BlendMode.darken
-                      ),
+                          Colors.black.withOpacity(0.35), BlendMode.darken),
                       image: AssetImage(homeData[index]['photo']),
                       fit: BoxFit.cover,
                     ),
@@ -112,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text(
                     homeData[index]['title'],
                     style: TextStyle(
-                      fontSize: h*0.035,
+                      fontSize: h * 0.035,
                       fontWeight: FontWeight.bold,
                       color: MyAppColors.appWhite,
                     ),
@@ -126,5 +124,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

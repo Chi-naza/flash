@@ -1,4 +1,3 @@
-
 import 'package:flash/controllers/auth_controller.dart';
 import 'package:flash/utilities/my_app_colors.dart';
 import 'package:flash/widgets/switch_icon_widget.dart';
@@ -6,12 +5,10 @@ import 'package:flash/widgets/text_num_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class ProfileScreen extends StatelessWidget {
+  final authController = Get.find<Authcontroller>();
 
-  ProfileScreen({Key? key}) : super(key: key);
-
-  Authcontroller authController = Get.find<Authcontroller>();
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
               Divider(
                 thickness: 2,
               ),
-               SizedBox(
+              SizedBox(
                 height: h * 0.03,
               ),
               InkWell(
@@ -127,12 +124,12 @@ class ProfileScreen extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    Icon(                    
+                    Icon(
                       Icons.logout_rounded,
                       size: h * 0.03,
                       color: MyAppColors.mainColor,
                     ),
-                    SizedBox(width: h*0.01),
+                    SizedBox(width: h * 0.01),
                     Text(
                       'Logout',
                       style: TextStyle(
@@ -151,26 +148,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

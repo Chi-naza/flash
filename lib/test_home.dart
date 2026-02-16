@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class TestHomeScreen extends StatelessWidget {
   const TestHomeScreen({Key? key}) : super(key: key);
@@ -29,7 +26,7 @@ class TestHomeScreen extends StatelessWidget {
                 color: Colors.black,
                 child: const Center(
                   child: Text(
-                    'Child 1', 
+                    'Child 1',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -41,7 +38,7 @@ class TestHomeScreen extends StatelessWidget {
                 color: Colors.black,
                 child: const Center(
                   child: Text(
-                    'Child 2', 
+                    'Child 2',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -53,7 +50,7 @@ class TestHomeScreen extends StatelessWidget {
                 color: Colors.black,
                 child: const Center(
                   child: Text(
-                    'Child 3', 
+                    'Child 3',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -65,7 +62,7 @@ class TestHomeScreen extends StatelessWidget {
                 color: Colors.black,
                 child: const Center(
                   child: Text(
-                    'Child 4', 
+                    'Child 4',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
