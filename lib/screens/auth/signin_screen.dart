@@ -12,7 +12,7 @@ class SignInScreen extends StatelessWidget {
 
   static String routeName = '/sign-in';
 
-  final Authcontroller authController = Get.find<Authcontroller>();
+  final authController = Get.find<AuthController>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -69,7 +69,7 @@ class SignInScreen extends StatelessWidget {
                             autocorrect: true,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(h * 0.023),
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.email,
                                 color: MyAppColors.mainColor,
                               ),
@@ -91,7 +91,7 @@ class SignInScreen extends StatelessWidget {
                               autocorrect: true,
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(h * 0.023),
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.lock,
                                   color: MyAppColors.mainColor,
                                 ),
@@ -131,7 +131,7 @@ class SignInScreen extends StatelessWidget {
                     String pswd = passwordController.text.trim();
 
                     if (authController.validateSignIn(email, pswd)) {
-                      authController.loginUser(email, pswd);
+                      authController.loginUser(email: email, password: pswd);
                     }
                   },
                   child: OurButton(
@@ -147,7 +147,7 @@ class SignInScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Don't have an Account?",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () => Get.toNamed(SignUpScreen.routeName),
-                      child: Text(
+                      child: const Text(
                         'Register',
                         style: TextStyle(
                           color: MyAppColors.mainColor,

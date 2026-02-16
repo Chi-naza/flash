@@ -2,22 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>104943080766-nv7e2f044jbqje6erobenl720qthr1o9.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.104943080766-nv7e2f044jbqje6erobenl720qthr1o9</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAhQe6iWSNdCJ_gVe3vxCeLoPIXkdRBROg</string>
+	<string>AIzaSyBaMF3Uv5l-P8UZklQaGFNmi5GWmXodExY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>104943080766</string>
+	<string>693012734019</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.flash</string>
+	<string>com.nanocodes.Flash</string>
 	<key>PROJECT_ID</key>
-	<string>flash-64c31</string>
+	<string>flash-766b1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>flash-64c31.appspot.com</string>
+	<string>flash-766b1.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:104943080766:ios:e1a4cf0840d0f84817c86f</string>
+	<string>1:693012734019:ios:1dc5559553a4e1014374f6</string>
 </dict>
 </plist>

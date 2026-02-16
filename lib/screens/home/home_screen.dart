@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 class HomeScreen extends StatelessWidget {
   static String routeName = '/home';
 
-  Authcontroller authcontroller = Get.find<Authcontroller>();
+  AuthController authController = Get.find<AuthController>();
 
   HomeScreen({super.key});
 
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              authcontroller.logoutUser();
+              authController.logoutUser();
             },
             icon: const Icon(
               Icons.logout,
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
           margin:
               EdgeInsets.symmetric(horizontal: h * 0.008, vertical: h * 0.08),
           child: GridView.count(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 3,
             crossAxisSpacing: h * 0.006,

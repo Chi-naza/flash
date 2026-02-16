@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class SignUpScreen extends StatelessWidget {
   static String routeName = '/sign-up';
 
-  final Authcontroller authController = Get.find<Authcontroller>();
+  final authController = Get.find<AuthController>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -35,13 +35,13 @@ class SignUpScreen extends StatelessWidget {
                 Opacity(
                   opacity: 0.05,
                   child: ShaderMask(
-                      child: Image(
+                      child: const Image(
                         image: AssetImage(
                           'assets/images/logo.png',
                         ),
                       ),
                       shaderCallback: (Rect bounds) {
-                        return LinearGradient(colors: [
+                        return const LinearGradient(colors: [
                           Colors.black,
                           MyAppColors.mainColorLight,
                         ]).createShader(bounds);
@@ -50,7 +50,7 @@ class SignUpScreen extends StatelessWidget {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 90),
+              margin: const EdgeInsets.only(top: 90),
               child: Column(
                 children: [
                   ShaderMask(
@@ -59,7 +59,7 @@ class SignUpScreen extends StatelessWidget {
                         width: w * 0.29,
                       ),
                       shaderCallback: (Rect bounds) {
-                        return LinearGradient(colors: [
+                        return const LinearGradient(colors: [
                           MyAppColors.mainColor,
                           MyAppColors.mainColorLight,
                         ]).createShader(bounds);
@@ -78,7 +78,7 @@ class SignUpScreen extends StatelessWidget {
                         controller: emailController,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.email,
                             color: MyAppColors.mainColor,
                           ),
@@ -103,7 +103,7 @@ class SignUpScreen extends StatelessWidget {
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.person,
                             color: MyAppColors.mainColor,
                           ),
@@ -129,7 +129,7 @@ class SignUpScreen extends StatelessWidget {
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
                           ),
@@ -155,7 +155,7 @@ class SignUpScreen extends StatelessWidget {
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
                           ),
@@ -178,7 +178,8 @@ class SignUpScreen extends StatelessWidget {
 
                       if (authController.validateSignUp(
                           email, pswd, pswd2, username)) {
-                        authController.registerUser(email, pswd, username);
+                        authController.registerUser(
+                            email: email, password: pswd, username: username);
                       }
                     },
                     child: OurButton(

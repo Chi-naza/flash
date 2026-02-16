@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final authController = Get.find<Authcontroller>();
+  final authController = Get.find<AuthController>();
 
   ProfileScreen({super.key});
 
@@ -112,9 +112,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Divider(
-                thickness: 2,
-              ),
+              const Divider(thickness: 2),
               SizedBox(
                 height: h * 0.03,
               ),

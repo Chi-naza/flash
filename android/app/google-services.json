@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "104943080766",
-    "project_id": "flash-64c31",
-    "storage_bucket": "flash-64c31.appspot.com"
+    "project_number": "693012734019",
+    "project_id": "flash-766b1",
+    "storage_bucket": "flash-766b1.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:104943080766:android:6974c4a80d6108e817c86f",
+        "mobilesdk_app_id": "1:693012734019:android:451bf4018a293bcf4374f6",
         "android_client_info": {
-          "package_name": "com.example.flash"
+          "package_name": "com.nanocodes.Flash"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "104943080766-ktb0n3822jh7mvlqffklp5jt9fffs7rd.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBBMC_RB32NO4Y8cIu6z-MbJUrcECa6Og0"
+          "current_key": "AIzaSyCky8g5FeVBRDTmhnKcIemre02q9fce3lY"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "104943080766-ktb0n3822jh7mvlqffklp5jt9fffs7rd.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

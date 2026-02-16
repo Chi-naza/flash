@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AppBindings().dependencies();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  AppBindings().dependencies();
   runApp(const MyApp());
 }
 

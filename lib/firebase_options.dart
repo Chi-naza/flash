@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBBMC_RB32NO4Y8cIu6z-MbJUrcECa6Og0',
-    appId: '1:104943080766:android:6974c4a80d6108e817c86f',
-    messagingSenderId: '104943080766',
-    projectId: 'flash-64c31',
-    storageBucket: 'flash-64c31.appspot.com',
+    apiKey: 'AIzaSyCky8g5FeVBRDTmhnKcIemre02q9fce3lY',
+    appId: '1:693012734019:android:451bf4018a293bcf4374f6',
+    messagingSenderId: '693012734019',
+    projectId: 'flash-766b1',
+    storageBucket: 'flash-766b1.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAhQe6iWSNdCJ_gVe3vxCeLoPIXkdRBROg',
-    appId: '1:104943080766:ios:e1a4cf0840d0f84817c86f',
-    messagingSenderId: '104943080766',
-    projectId: 'flash-64c31',
-    storageBucket: 'flash-64c31.appspot.com',
-    iosClientId: '104943080766-nv7e2f044jbqje6erobenl720qthr1o9.apps.googleusercontent.com',
-    iosBundleId: 'com.example.flash',
+    apiKey: 'AIzaSyBaMF3Uv5l-P8UZklQaGFNmi5GWmXodExY',
+    appId: '1:693012734019:ios:1dc5559553a4e1014374f6',
+    messagingSenderId: '693012734019',
+    projectId: 'flash-766b1',
+    storageBucket: 'flash-766b1.firebasestorage.app',
+    iosBundleId: 'com.nanocodes.Flash',
   );
+
 }
