@@ -21,7 +21,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width.round();
     var h = MediaQuery.of(context).size.height.round();
-    print("Screen Height: $h");
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class NewsController extends GetxController {
-
   // NEWS LISTS
   final generalNewsList = <Articles>[].obs;
   final artNewsList = <Articles>[].obs;
@@ -19,8 +18,6 @@ class NewsController extends GetxController {
   // A reactive boolean variable to check if data is still being loaded
   final stillFetching = false.obs;
 
-
-
   // GetConnect from getX
   final _getConnect = GetConnect();
 
@@ -29,8 +26,6 @@ class NewsController extends GetxController {
     fetchAllNewsData();
     super.onReady();
   }
-
-
 
   Future<void> fetchAllNewsData() async {
     await fetchGeneralNewsData();
@@ -44,9 +39,8 @@ class NewsController extends GetxController {
     await fetchArtNewsData();
   }
 
-
   Future<void> fetchGeneralNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -54,30 +48,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(generalNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         generalNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
   // ART NEWS
   Future<void> fetchArtNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -85,29 +77,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(artNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         artNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
   // ECONOMY NEWS
   Future<void> fetchEconomyNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -115,32 +106,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(businessNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         economyNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
-
-
   // FUN NEWS
   Future<void> fetchFunNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -148,31 +135,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(funNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         funNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
-
   // HEALTH NEWS
   Future<void> fetchHealthNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -180,30 +164,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(healthNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         healthNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
   // MUSIC NEWS
   Future<void> fetchMusicNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -211,30 +193,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(musicNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         musicNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
   // SCIENCE NEWS
   Future<void> fetchScienceNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -242,30 +222,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(scienceNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         scienceNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
   // SPORTS NEWS
   Future<void> fetchSportsNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -273,30 +251,28 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(sportsNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         sportsNewsList.assignAll(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
 
-
-
-
   // TECH NEWS
   Future<void> fetchTechNewsData() async {
-    try{
+    try {
       // isfetching set to true
       stillFetching.value = true;
 
@@ -304,28 +280,23 @@ class NewsController extends GetxController {
       Response response = await _getConnect.get(techNewsAPI);
 
       update();
-      
+
       // status 200 means successful fetch
-      if(response.statusCode == 200){
-        final newsList = (response.body['articles'] as List ).map((e) => Articles.fromJson(e)).toList();
-  
+      if (response.statusCode == 200) {
+        final newsList = (response.body['articles'] as List)
+            .map((e) => Articles.fromJson(e))
+            .toList();
+
         techNewsList.assignAll(newsList);
         print(newsList);
 
         // when data is done fetching and is saved we set stillfetching bool to false
-        stillFetching.value = false;        
-      }     
-      
-    }catch(e){
-      if(kDebugMode){
+        stillFetching.value = false;
+      }
+    } catch (e) {
+      if (kDebugMode) {
         print(e);
       }
     }
   }
-
-
-
-
-
-
 }
